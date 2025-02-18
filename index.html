@@ -6,29 +6,33 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Web app </h1>
-    <form action="">
-        <input type="text" name="" id="name"> <br> <br>
-        <input type="text" name="" id="age"> <br> <br>
-        <button id="btn">Jo'natish</button>
+    <h1>Web app</h1>
+    <form id="form">
+        <input type="text" id="name" placeholder="Ismingiz"> <br> <br>
+        <input type="text" id="age" placeholder="Yoshingiz"> <br> <br>
+        <button type="submit" id="btn">Jo'natish</button>
     </form>
+
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        let name = document.getElementById('name')
-        let age = document.getElementById('age')
-        let btn = document.getElementById('btn')
+        let form = document.getElementById('form');
+        let name = document.getElementById('name');
+        let age = document.getElementById('age');
+        
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); 
 
-        btn.addEventListener('click', ()=> {
-            data = {
-                ism: name,
-                age: age
-            }
+            let data = {
+                ism: name.value,
+                age: age.value
+            };
+
             console.log(data);
+            
             const telegram = window.Telegram.WebApp;
-            telegram.sendData(JSON.stringify(data))
-            console.log('success');
-        })
+            telegram.sendData(JSON.stringify(data));
+            console.log('Success');
+        });
     </script>
-
 </body>
 </html>
